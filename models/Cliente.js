@@ -1,8 +1,6 @@
 class Cliente{
-    constructor(id_cliente,empresa,cliente,calle,exterior,interior,colonia,cp,ciudad,estado){
-        this.id_cliente = id_cliente;
-        this.empresa = empresa;
-        this.cliente = cliente;
+    constructor(nombre,calle,exterior,interior,colonia,cp,ciudad,estado,telefono){
+        this.nombre = nombre;
         this.calle = calle;
         this.exterior = exterior;
         this.interior = interior;
@@ -10,6 +8,7 @@ class Cliente{
         this.cp = cp;
         this.ciudad = ciudad;
         this.estado = estado;
+        this.telefono = telefono;
     }
 }
 
