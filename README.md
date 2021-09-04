@@ -65,4 +65,21 @@ Para este módulo del curso, la API va a cumplir con las siguientes funcionalida
 </p>
  
 ## Descripción técnica
-Una muy breve descripción técnica del proyecto en donde se mencionen las tecnologías que se están utilizando y la forma de correrlo.
+- Para poder ejecutar es necesario tener instalado nodejs, postman y mongodb con la finalidad de ver en tiempo real el funcionamiento de nuestra api.
+  <h4>Node js.</h4>
+- Es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor basado en el lenguaje Javascript, es aquí donde nosotros hemos creado la lógica de nuestra API. Para saber si tienes instalado node en tu computador basta con abrir la terminal y ejecutar *node --version*, esta te desplegará la versión que tienes. 
+- De no ser así puedes descargarlo en este link:
+    <a href="https://nodejs.org/es/" tag="_blank">Instalar NodeJS</a> (elije la versión recomendada).
+    
+  <h4>POSTMAN</h4>
+- Es una herramienta que nos servirá para hacer peticiones crud a nuestra api, esto con la finalidad de proveernos una mejor forma de trabajo, para instalar este programa puedes dar click al siguiente enlace: 
+    <a href="https://www.postman.com/" tag="_blank">Instalar POSTMAN</a>
+    
+   <h4>MongoDB</h4>
+-  Para este proyecto utilizaremos MongoDB, que es un gestor de base de datos noSQL orientado a documentos, para su instalación tendrás que entrar al link adjunto e ir a la parte de Sistemas operativos, tendrás que descargar e instalar el archivo que esté asociado a tu SO, el siguiente enlace te lleva a la sección de instalación: 
+    <a href="https://docs.mongodb.com/manual/installation/" tag="_blank">Instalar MongoDB</a>
+   
+    <h3>Ejecución del proyecto</h3>
+ - Para esto tendrás que hacer un git clone de este proyecto y alojarlo en una carpeta exclusiva, una vez haciendo descargado tendrás que dirigirte a la terminal y ejecutar el comando *npm i*, esta nos generará una carpeta llamada *node_dependences* que servirá para la ejecución de nuestro proyecto. Por último en la terminal, una vez en nuestro proyecto ejecutamos el comando npm run dev, levantando así nuestro server y finalmente poder hacer las peticiones que querramos.
+
+ - Como nota, es recomendable hacer estos pasos utilizando el git bash.
