@@ -1,15 +1,36 @@
-class Cliente{
-    constructor(nombre,calle,exterior,interior,colonia,cp,ciudad,estado,telefono){
-        this.nombre = nombre;
-        this.calle = calle;
-        this.exterior = exterior;
-        this.interior = interior;
-        this.colonia = colonia;
-        this.cp = cp;
-        this.ciudad = ciudad;
-        this.estado = estado;
-        this.telefono = telefono;
-    }
-}
+//Importación de la biblioteca mongoose
+const mongoose = require('mongoose');
 
-module.exports(Cliente);
+//Definicion del esquema
+const ClienteSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        required: true
+    },
+    nombre: {
+        type: String,
+        required: true
+    },
+    direccion: {
+        type: String,
+        required: true
+    },
+    telefono:{
+        type: String,
+        required: true
+    }
+}, {timestamps: true, collection: 'clientes'});
+
+//Datos publicos del cliente
+ClienteSchema.methods.publicData = function (){
+    return{
+        id: this.id,
+        email: this.email,
+        nombre: this.nombre,
+        direccion: this.direccion,
+        telefono: this.telefono,
+        creacion: this.createdAt
+    };
+};
+
+mongoose.model("Cliente", ClienteSchema);
