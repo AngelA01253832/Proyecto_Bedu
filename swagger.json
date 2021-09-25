@@ -1,0 +1,672 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Documentacion sobre API encargada de delivery de restaurantes",
+    "version": "1.0.0",
+    "title": "Delivery restaurant API"
+  },
+  "host": "delivery-app-appi.herokuapp.com",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "Cliente",
+      "description": "Todo sobre los clientes"
+    },
+    {
+      "name": "Pedido",
+      "description": "Acceso a todos los pedidos"
+    },
+    {
+      "name": "Plato",
+      "description": "Todo sobre los platos del restaurante"
+    },
+    {
+      "name": "Receta",
+      "description": "Acceso a las recetas de los platos"
+    }
+  ],
+  "paths": {
+    "/cliente": {
+      "post": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Agrega un nuevo cliente",
+        "operationId": "addCliente",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Es necesario un objeto de cliente para agregarlo al servicio",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cliente"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Actualizar la informacion de un cliente existente",
+        "operationId": "updateClient",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto con los datos del cliente que seran modificados y actualizados",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cliente"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Cliente not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/cliente/{clienteId}": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Encontrar cliente por ID",
+        "description": "Returns a single cliente",
+        "operationId": "getClientById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clienteId",
+            "in": "path",
+            "description": "ID of cliente to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Cliente"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Cliente not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cliente"
+        ],
+        "summary": "Borrar un cliente por ID",
+        "description": "",
+        "operationId": "deleteClient",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "clienteId",
+            "in": "path",
+            "description": "Client id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Client not found"
+          }
+        }
+      }
+    },
+    "/Pedido": {
+      "post": {
+        "tags": [
+          "Pedido"
+        ],
+        "summary": "Agrega un nuevo pedido",
+        "operationId": "addPedido",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Es necesario un objeto de pedido para agregarlo al servicio",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pedido"
+        ],
+        "summary": "Actualizar la informacion de un pedido existente",
+        "operationId": "updatePedido",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto con los datos del pedido que seran modificados y actualizados",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pedido not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/Pedido/{pedidoId}": {
+      "get": {
+        "tags": [
+          "Pedido"
+        ],
+        "summary": "Encontrar pedido por ID",
+        "description": "Returns a single pedido",
+        "operationId": "getPedidobyId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "pedidoId",
+            "in": "path",
+            "description": "ID of pedido to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pedido not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pedido"
+        ],
+        "summary": "Borrar un pedido por ID",
+        "description": "",
+        "operationId": "deletePedido",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "pedidoId",
+            "in": "path",
+            "description": "Pedido id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pedido not found"
+          }
+        }
+      }
+    },
+    "/Plato": {
+      "post": {
+        "tags": [
+          "Plato"
+        ],
+        "summary": "Agrega un nuevo plato",
+        "operationId": "addPlato",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Es necesario un objeto de plato para agregarlo al servicio",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Plato"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Plato"
+        ],
+        "summary": "Actualizar la informacion de un plato existente",
+        "operationId": "updatePlato",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto con los datos del plato que seran modificados y actualizados",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Plato"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Plato not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/Plato/{platoId}": {
+      "get": {
+        "tags": [
+          "Plato"
+        ],
+        "summary": "Encontrar Plato por ID",
+        "description": "Returns a single plato",
+        "operationId": "getPlatoById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "platoId",
+            "in": "path",
+            "description": "ID of plato to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Plato"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Plato not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Plato"
+        ],
+        "summary": "Borrar un plato por ID",
+        "description": "",
+        "operationId": "deletePlato",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "platoId",
+            "in": "path",
+            "description": "Plato id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Plato not found"
+          }
+        }
+      }
+    },
+    "/Receta": {
+      "post": {
+        "tags": [
+          "Receta"
+        ],
+        "summary": "Agrega una nueva receta",
+        "operationId": "addReceta",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Es necesario un objeto de receta para agregarlo al servicio",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Receta"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Receta"
+        ],
+        "summary": "Actualizar la informacion de una receta existente",
+        "operationId": "updateReceta",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Objeto con los datos de la receta que seran modificados y actualizados",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Receta"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Receta not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/Receta/{recetaid}": {
+      "get": {
+        "tags": [
+          "Receta"
+        ],
+        "summary": "Encontrar receta por ID",
+        "description": "Returns a single receta",
+        "operationId": "getRecetabyID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "recetaid",
+            "in": "path",
+            "description": "ID of receta to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Pedido"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Receta not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Receta"
+        ],
+        "summary": "Borrar una receta por ID",
+        "description": "",
+        "operationId": "deleteReceta",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "recetaid",
+            "in": "path",
+            "description": "Receta id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Receta not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Pedido": {
+      "type": "object",
+      "properties": {
+        "fecha": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "platos": {
+          "type": "object",
+          "items": {
+            "type": "object",
+            "properties": {
+              "idPlato": {
+                "type": "string"
+              },
+              "cantidad": {
+                "type": "number"
+              }
+            },
+            "example": {
+              "idPlato": "3",
+              "cantidad": 3
+            }
+          }
+        },
+        "importe": {
+          "type": "string",
+          "example": "350 pesos"
+        },
+        "estado": {
+          "type": "string",
+          "example": "abierto"
+        },
+        "cliente": {
+          "type": "string",
+          "example": "id"
+        }
+      }
+    },
+    "Plato": {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string",
+          "example": "Taco de carne asada"
+        },
+        "precio": {
+          "type": "number",
+          "example": 18
+        },
+        "tiempodePreparacion": {
+          "type": "string",
+          "example": "7 min"
+        },
+        "calorias": {
+          "type": "string",
+          "example": "63 kcl"
+        },
+        "porciones": {
+          "type": "number",
+          "example": "1"
+        },
+        "idReceta": {
+          "type": "string",
+          "example": "id"
+        }
+      }
+    },
+    "Receta": {
+      "type": "object",
+      "properties": {
+        "ingredientes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": [
+              "tortilla",
+              "carne enchilada",
+              "cilantro",
+              "cebolla"
+            ]
+          }
+        }
+      }
+    },
+    "Cliente": {
+      "type": "object",
+      "required": [
+        "email",
+        "nombre",
+        "direccion",
+        "telefono"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "angel@gmail.com"
+        },
+        "nombre": {
+          "type": "string",
+          "example": "Angel Bonilla"
+        },
+        "direccion": {
+          "type": "string",
+          "example": "Calle 19 numero 44"
+        },
+        "telefono": {
+          "type": "string",
+          "example": "6824336613"
+        }
+      }
+    }
+  }
+}
