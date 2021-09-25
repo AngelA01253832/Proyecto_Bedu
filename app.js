@@ -22,7 +22,7 @@ require('./models/Receta');
 app.use('/v1', require('./routes'));
 
 //Iniciamos el servidor
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server listening on port ${process.env.PORT}`)
 });
 
