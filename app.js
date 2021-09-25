@@ -10,9 +10,7 @@ app.use(bodyParser.json());
 
 //Moongose
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb"
-);
+mongoose.connect(process.env.MONGODB_URI,{ useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 mongoose.set("debug", true);
 
 //Modelos
