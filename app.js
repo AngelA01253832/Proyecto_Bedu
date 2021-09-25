@@ -1,7 +1,6 @@
 //Express
 const express = require('express');
 const app = express();
-const PORT = 4001;
 
 //Bodyparser
 const bodyParser = require('body-parser');
