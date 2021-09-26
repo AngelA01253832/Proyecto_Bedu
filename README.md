@@ -13,7 +13,7 @@ Planteamos desarrollar un sistema de delivery para restaurantes, que controle la
 Para este módulo del curso, la API va a cumplir con las siguientes funcionalidades:
 - Los clientes deben poder consultar los diferentes platillos que hay en el sistema
 - Los clientes deben poder realizar pedidos
-- Mostrar la lista de platillos, especialidades y platillo del día, así como la información correspondiente a cada uno de estos
+- Mostrar la lista de platillos, así como la información correspondiente a cada uno de estos
 - CRUD de clientes
 - CRUD de platillos
 
@@ -44,12 +44,6 @@ Para este módulo del curso, la API va a cumplir con las siguientes funcionalida
  
  <p align="center">
   <img src="assets/CasosUso/realizar_pedido.jpg" />
-</p>
-
-- Como cliente de DeliveryApp quiero registrarme para realizar un pedido
-
- <p align="center">
-  <img src="assets/CasosUso/registrar_cte.jpg" />
 </p>
 
 - Como administrador de DeliveryApp quiero gestionar platillos
