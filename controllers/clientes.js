@@ -78,10 +78,38 @@ function limitar(req, res, next){
   }).catch(next)
 }
 
+//-------Consulta por campos
+function consultaCampos(req, res, next) {
+  let nuevaInfo = req.body;
+  const project = {};
+
+  if (typeof nuevaInfo.id !== "undefined" && nuevaInfo.id === 1)
+    project._id = nuevaInfo.id;
+  if (typeof nuevaInfo.email !== "undefined" && nuevaInfo.email === 1)
+    project.email = nuevaInfo.email;
+  if (typeof nuevaInfo.nombre !== "undefined" && nuevaInfo.nombre === 1)
+    project.nombre = nuevaInfo.nombre;
+  if (typeof nuevaInfo.direccion !== "undefined" && nuevaInfo.direccion === 1)
+    project.direccion = nuevaInfo.direccion;
+  if (typeof nuevaInfo.telefono !== "undefined" && nuevaInfo.telefono === 1)
+    project.telefono = nuevaInfo.telefono;
+
+  Cliente.aggregate([
+    {
+      $project: project,
+    },
+  ])
+    .then((r) => {
+      res.status(200).send(r);
+    })
+    .catch(next);
+}
+
 module.exports = {
   crearCliente,
   obtenerCliente,
   modificarCliente,
   eliminarCliente,
-  limitar
+  limitar,
+  consultaCampos
 };
