@@ -24,7 +24,14 @@ function obtenerReceta(req, res, next) {
       })
       .catch(next);
   } else {
-    Receta.find()
+    Receta.aggregate([
+      {
+        '$project': {
+          '_id': 1, 
+          'ingredientes': 1
+        }
+      }
+    ])
       .then((recetas) => {
         res.send(recetas);
       })
@@ -59,9 +66,29 @@ function eliminarReceta(req, res, next) {
   });
 }
 
+//-----------Limite de registros
+function limitar(req, res, next) {
+  const limite = parseInt(req.params.limite);
+  Receta.aggregate([
+    {
+      '$project': {
+        '_id': 1, 
+        'ingredientes': 1
+      }
+    }, {
+      '$limit': 5
+    }
+  ])
+    .then((r) => {
+      res.status(200).send(r);
+    })
+    .catch(next);
+}
+
 module.exports = {
   crearReceta,
   obtenerReceta,
   modificarReceta,
   eliminarReceta,
+  limitar
 };
